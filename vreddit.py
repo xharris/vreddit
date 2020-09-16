@@ -22,12 +22,16 @@ if len(sys.argv) >= 2:
 if len(sys.argv) >= 3:
     OUTPUT = sys.argv[2]
 
-if len(PAGE_URL) == 0:
-    exit('Error: Needs a page url')
-
 
 def rel_path(*p):
     return os.path.join(os.path.dirname(__file__), *p)
+
+
+if len(PAGE_URL) == 0:
+    exit('Error: Needs a page url')
+
+if not os.path.exists(rel_path('ffmpeg.exe')):
+    exit(f"Error: ffmpeg.exe not found at {rel_path('ffmpeg.exe')}")
 
 
 # unused atm. used then reddit json was easily accessible
@@ -180,8 +184,8 @@ if highest_vid_f:
     # convert mkv to OUTPUT format
     run_ffmpeg(f"-y -i {mkv_path} -crf 20 {output_path}")
 
-# clean up m3u8 and ts files
+# clean up m3u8, ts, and aac files
 if os.path.exists(mkv_path):
     os.remove(mkv_path)
-# if os.path.exists(rel_path('files')):
-#     shutil.rmtree(rel_path('files'))
+if os.path.exists(rel_path('files')):
+    shutil.rmtree(rel_path('files'))
