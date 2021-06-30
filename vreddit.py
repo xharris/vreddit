@@ -37,7 +37,7 @@ if not os.path.exists(rel_path('ffmpeg.exe')):
     exit(f"Error: ffmpeg.exe not found at {rel_path('ffmpeg.exe')}")
 
 
-# unused atm. used then reddit json was easily accessible
+# unused atm. used when reddit json was easily accessible
 def find_url(d):
     if isinstance(d, list):
         for child in d:
