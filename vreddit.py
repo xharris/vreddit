@@ -5,7 +5,7 @@ OUTPUT = 'mp4'
 
 import urllib
 from pathlib import Path
-import re, subprocess, shutil, os, sys, requests, json, argparse
+import re, subprocess, shutil, os, requests, json, argparse
 
 parser = argparse.ArgumentParser(description="Download a reddit video")
 parser.add_argument('url', type=str, nargs=1)
